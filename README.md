@@ -1,6 +1,6 @@
 # Computer Vision: Advanced Image Processing & Deep Learning
 
-This repository showcases a comprehensive implementation of foundational and advanced computer vision algorithms, covering classical image processing techniques and modern deep learning approaches. The projects demonstrate expertise in multi-resolution analysis, geometric transformations, feature detection, image alignment, and generative models—core competencies for research in signal processing, telecommunications, and AI-driven visual systems.
+This repository showcases a comprehensive implementation of foundational and advanced computer vision algorithms, covering classical image processing techniques and modern deep learning approaches. The projects demonstrate expertise in multi-resolution analysis, geometric transformations, feature detection, image alignment, and generative models—core competencies.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -10,16 +10,12 @@ This repository showcases a comprehensive implementation of foundational and adv
   - [Exercise 3: SIFT Feature Detection & RANSAC](#exercise-3-sift-feature-detection--ransac)
   - [Exercise 4: ECC Image Alignment & Visual Tracking](#exercise-4-ecc-image-alignment--visual-tracking)
   - [Exercise 5: Autoencoders & Variational Learning](#exercise-5-autoencoders--variational-learning)
-- [Technical Stack](#technical-stack)
-- [Key Achievements](#key-achievements)
+
 - [Installation](#installation)
 - [Usage](#usage)
 
 ## Overview
 
-This work addresses critical challenges in computer vision through rigorous mathematical foundations and efficient algorithmic implementations. Each project explores signal processing concepts essential for modern applications in autonomous systems, medical imaging, telecommunications, and intelligent visual analysis.
-
-**Research-Oriented Focus:**
 - **Multi-Resolution Analysis**: Gaussian/Laplacian pyramids for efficient image representation and frequency decomposition
 - **Robust Estimation**: RANSAC-based outlier rejection for reliable feature matching under noise
 - **Optimization Theory**: Gradient-descent alignment algorithms (ECC, Lucas-Kanade) for sub-pixel registration
@@ -199,31 +195,6 @@ This exercise explores unsupervised representation learning through autoencoder 
 - Batch size: 250, Epochs: 40-100
 - Dataset: MNIST (60K train, 10K test)
 ---
-
-## Installation
-
-### Prerequisites
-
-**MATLAB:**
-```bash
-# Required Toolboxes:
-# - Image Processing Toolbox
-# - Computer Vision Toolbox
-# - Simulink (for Exercise 4, Part B)
-```
-
-**Python Environment:**
-```bash
-# Create virtual environment
-python -m venv cv_env
-source cv_env/bin/activate  # Windows: cv_env\Scripts\activate
-
-# Install dependencies
-pip install torch torchvision torchaudio
-pip install numpy pandas matplotlib
-pip install scikit-learn
-pip install opencv-python  # optional
-```
 
 ### Dataset Setup
 
