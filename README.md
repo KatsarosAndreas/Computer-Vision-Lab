@@ -47,11 +47,6 @@ This exercise implements multi-resolution image analysis through pyramid decompo
 - **`pyrReconstruct.m`**: Reconstructs images from Laplacian decomposition
 - **`pyr_reduce.m` / `pyr_expand.m`**: Efficient pyramid downsampling/upsampling with anti-aliasing
 
-**Key Applications:**
-- Image fusion and compositing with perceptually smooth transitions
-- Frequency-domain image editing and analysis
-- Multi-scale feature extraction for object detection
-
 #### Part B: Deep Learning Segmentation (PyTorch)
 
 **Implementation:** `pspnet_eval.py`
@@ -63,12 +58,7 @@ Evaluates a pre-trained **Pyramid Scene Parsing Network (PSPNet)** on the Citysc
 - Per-class IoU computation for 35 semantic categories
 - Proper handling of class imbalance in urban scene parsing
 - GPU-accelerated inference with CUDA support
-
-**Research Relevance:**  
-Pyramid pooling architectures are critical in applications requiring spatial context understanding (autonomous driving, medical imaging, satellite analysis). The multi-scale aggregation enables robust recognition under varying object sizes—a common challenge in telecommunications signal processing and radar imaging.
-
-**Files:** `er1_final.m`, `er2_final.m`, `er3_final.m`, `pspnet_eval.py`
-
+- 
 ---
 
 ### Exercise 2: Geometric Transformations & Image Warping
@@ -112,12 +102,6 @@ This exercise explores parametric image transformations essential for camera cal
 - Custom matrix transformation pipelines
 - Boundary handling and interpolation strategies
 - Visualization of transformation effects
-
-**Research Applications:**  
-These transformations are fundamental in telecommunications (antenna array processing), medical imaging (CT/MRI registration), and satellite imaging (multi-temporal analysis). The implementations demonstrate understanding of homogeneous coordinates and projective geometry—mathematical frameworks shared with radar signal processing and synthetic aperture imaging.
-
-**Files:** `Ex2_Task2.m` through `Ex2_Task8.m`
-
 ---
 
 ### Exercise 3: SIFT Feature Detection & RANSAC
@@ -126,34 +110,6 @@ These transformations are fundamental in telecommunications (antenna array proce
 **Algorithms:** SIFT, RANSAC, Robust Feature Matching
 
 This exercise implements scale-invariant feature detection and robust geometric estimation—core techniques for object recognition, image retrieval, and visual odometry.
-
-#### Core Components:
-
-**1. SIFT Feature Extraction (`SIFT_feature.m`):**
-- Scale-space extrema detection using Difference-of-Gaussian (DoG) pyramids
-- Keypoint localization with sub-pixel refinement
-- Orientation assignment for rotation invariance
-- 128-dimensional descriptor generation from gradient histograms
-
-**Technical Details:**
-- Multi-octave pyramid construction (σ₀ = √2, 3 levels per octave)
-- Extrema detection in 3D scale-space (26-neighbor comparison)
-- Contrast and edge response filtering for stability
-
-**2. RANSAC Matching (`SIFT_RANSAC_Matching.m`):**
-- Descriptor-based feature correspondence using ratio test (threshold: 0.8)
-- Outlier rejection via RANSAC with projective transformation model
-- Homography estimation from inlier correspondences
-
-**Applications:**
-- Image matching under rotation, scaling, and illumination changes
-- Object recognition in cluttered scenes
-- Camera motion estimation for visual SLAM
-
-**Research Significance:**  
-SIFT remains the gold standard for feature-based matching in scenarios requiring robustness to geometric and photometric distortions. RANSAC's iterative outlier rejection mirrors robust estimation techniques in telecommunications (interference rejection, channel estimation) and radar processing (clutter suppression).
-
-**Files:** `SIFT_feature.m`, `SIFT_RANSAC_Matching.m`, `rotation.m`
 
 ---
 
@@ -242,52 +198,6 @@ This exercise explores unsupervised representation learning through autoencoder 
 - Loss: Binary cross-entropy (reconstruction) + KL divergence (VAE)
 - Batch size: 250, Epochs: 40-100
 - Dataset: MNIST (60K train, 10K test)
-
-#### Comparative Analysis:
-- **Experiment 1**: Linear AE vs PCA (weight similarity convergence)
-- **Experiment 2**: Reconstruction error comparison across architectures
-- **Experiment 3**: Latent space interpolation and manifold structure
-- **Experiment 4**: VAE generative capabilities with fixed noise
-
-**Research Relevance:**  
-Autoencoders are core to modern signal processing (denoising, compression, anomaly detection). VAE's probabilistic framework mirrors Bayesian estimation in communications and radar. The learned latent representations enable efficient signal encoding—critical for bandwidth-limited telecommunications channels.
-
-**Files:**  
-- `autoencoder_mnist_1.py` through `autoencoder_mnist_4.py`
-- `VAE.py`, `compare_autoencoders.py`
-- Jupyter notebooks: `autoencoder_mnist_*.ipynb`, `VAE.ipynb`
-
----
-
-## Technical Stack
-
-### Core Technologies
-- **MATLAB R2019b+**
-  - Image Processing Toolbox
-  - Computer Vision Toolbox
-  - Simulink (for real-time modeling)
-
-- **Python 3.8+**
-  - PyTorch 1.10+ (deep learning framework)
-  - NumPy, SciPy (numerical computing)
-  - OpenCV (optional, for additional processing)
-  - scikit-learn (PCA, preprocessing)
-  - Matplotlib (visualization)
-
-### Algorithms Implemented
-- **Classical CV**: SIFT, RANSAC, Harris corners, pyramid decomposition
-- **Alignment**: ECC, Lucas-Kanade, Gauss-Newton optimization
-- **Deep Learning**: Autoencoders (linear, CNN, variational), PSPNet
-- **Transformations**: Affine, projective, Euclidean mappings
-- **Optimization**: Gradient descent, compositional updates
-
-### Mathematical Foundations
-- Multi-scale signal representation
-- Robust statistical estimation
-- Differential geometry (Jacobians, Hessians)
-- Variational inference
-- Information theory (KL divergence, mutual information)
-
 ---
 
 ## Installation
@@ -328,89 +238,6 @@ pip install opencv-python  # optional
 # Files needed:
 #   - mnist_train.csv
 #   - mnist_test.csv
-```
-
----
-
-## Usage
-
-### Exercise 1: Pyramids
-
-**MATLAB:**
-```matlab
-% Laplacian pyramid blending
-run('ex01/Ex01-Katsaros_Andreas/Matlab_Ex1/pyrBlend.m')
-
-% Individual pyramid generation
-img = imread('apple1.jpg');
-pyr = genPyr(img, 'gauss', 5);  % 5-level Gaussian pyramid
-```
-
-**Python (PSPNet):**
-```bash
-cd "ex01/Ex01-Katsaros_Andreas/PspNet"
-python pspnet_eval.py
-# Evaluates model on Cityscapes validation set
-# Outputs per-class IoU metrics
-```
-
-### Exercise 2: Transformations
-
-```matlab
-% Run individual tasks
-cd "ex02/Ex02-Katsaros_Andreas/CV_2-TRANSFORMATIONS"
-run('Ex2_Task2.m')  % Scaling
-run('Ex2_Task3.m')  % Rotation
-run('Ex2_Task7.m')  % Homography
-run('Ex2_Task8.m')  % Mosaicking
-```
-
-### Exercise 3: SIFT + RANSAC
-
-```matlab
-cd "Ex03-Katsaros_Andreas/CV_3-SIFT"
-% Feature extraction
-run('SIFT_feature.m')
-
-% Matching with RANSAC
-run('SIFT_RANSAC_Matching.m')
-```
-
-### Exercise 4: Image Alignment
-
-```matlab
-cd "ex04/Ex04-Katsaros_Andreas/Part A"
-
-% Load images
-template = imread('template.jpg');
-image = imread('image.jpg');
-
-% Perform alignment
-[results, results_lk, MSE, rho, MSELK] = ecc_lk_alignment(image, template, 3, 50, 'affine', []);
-
-% results.warp contains final transformation
-% rho = ECC correlation coefficient
-```
-
-### Exercise 5: Autoencoders
-
-```bash
-cd "EX05/work"
-
-# Linear autoencoder (comparison with PCA)
-python autoencoder_mnist_1.py
-
-# Deep autoencoder
-python autoencoder_mnist_2.py
-
-# Convolutional autoencoder
-python autoencoder_mnist_3.py
-
-# Variational autoencoder
-python VAE.py
-
-# Or run Jupyter notebooks:
-jupyter notebook autoencoder_mnist_1.ipynb
 ```
 
 ---
